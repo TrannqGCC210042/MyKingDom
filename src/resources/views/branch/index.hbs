@@ -1,0 +1,150 @@
+<section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">BRANCH LIST</h2>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <form class="ms-5 d-flex" method="get">
+            <input type="text" class="form-control me-2" name="search" placeholder="Search">
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+        <div class="me-5">
+            <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#addBranchModal">
+                Add New Branch
+            </button>
+        </div>
+    </div>
+    <div class="mb-5 mx-5">
+        <table class="mt-2 table table-bordered">
+            <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col" width="400em">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col" width="600em">Address</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="branchList">
+                {{#each branches}}
+                <tr class="text-center align-middle" id="branch_{{this.id}}">
+                    <td scope="row">{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.phone}}</td>
+                    <td>{{this.address}}</td>
+                    <td>
+                        <button class="bi bi-pencil-square border-0 bg-white" onclick="UpdateBranch({{this.id}})"
+                            data-bs-toggle="modal" data-bs-target="#updateBranchModal"></button>
+                    </td>
+                    <td>
+                        <button class="bi bi-trash3 border-0 bg-white" onclick="DeleteBranch({{this.id}})"></button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- Pop up add branch --}}
+    <div class="modal fade" id="addBranchModal" tabindex="-1" aria-labelledby="addBranchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBranchModalLabel">Adding Branch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch name --}}
+                                <label for="add-branch-name">
+                                    <h6 class="fw-bold">Branch Name</h6>
+                                </label>
+                                {{!-- Input branch name --}}
+                                <input type="text" id="add-branch-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddBranchName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch phone --}}
+                                <label for="add-branch-phone">
+                                    <h6 class="fw-bold">Branch Phone</h6>
+                                </label>
+                                {{!-- Input branch phone --}}
+                                <input type="text" id="add-branch-phone" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddBranchPhone"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch address --}}
+                                <label for="add-branch-address">
+                                    <h6 class="fw-bold">Branch Address</h6>
+                                </label>
+                                {{!-- Input branch address --}}
+                                <textarea id="add-branch-address" cols="30" rows="5" class="form-control"></textarea>
+                                <span class="text-danger" id="errorAddBranchAddress"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonAddBranch">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- Pop up update branch --}}
+    <div class="modal fade" id="updateBranchModal" tabindex="-1" aria-labelledby="updateBranchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateBranchModalLabel">Updating Branch</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch name --}}
+                                <label for="update-branch-name">
+                                    <h6 class="fw-bold">Branch Name</h6>
+                                </label>
+                                {{!-- Input branch name --}}
+                                <input type="text" id="update-branch-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateBranchName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch phone --}}
+                                <label for="update-branch-phone">
+                                    <h6 class="fw-bold">Branch Phone</h6>
+                                </label>
+                                {{!-- Input branch phone --}}
+                                <input type="text" id="update-branch-phone" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateBranchPhone"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label branch address --}}
+                                <label for="update-branch-address">
+                                    <h6 class="fw-bold">Branch Address</h6>
+                                </label>
+                                {{!-- Input branch address --}}
+                                <textarea id="update-branch-address" cols="30" rows="5" class="form-control"></textarea>
+                                <span class="text-danger" id="errorUpdateBranchAddress"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonUpdateBranch">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

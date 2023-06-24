@@ -1,0 +1,238 @@
+<header class="ftco-section">
+    <div class="container-fluid px-lg-5 pb-3">
+        <div class="row">
+            <div class="col-md-8 order-md-first">
+                <div class="row">
+                    <div class="col-md-6 order-2 order-md-1 mb-md-0 mb-4">
+                        <form action="/shop" method="GET"
+                            class="searchform order-lg-first">
+                            <div
+                                class="form-group d-flex">
+                                <input type="text" name="search" id="search"
+                                    class="form-control pl-3 shadow rounded"
+                                    placeholder="{{searchValue}}">
+                                <button type="submit"
+                                    class="form-control search">
+                                    <span class="fa-solid fa-magnifying-glass"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6 my-3 my-md-0 order-1 order-md-2">
+                        <div class="text-center">
+                            <a href="/"> <img src="/img/logo/logo.png"
+                                    style="width: 200px" alt="Logo image">
+                            </a> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center
+                justify-content-lg-end align-items-center">
+                <div class="social-media">
+                    {{#if user}}
+                    <nav class="header-nav ms-auto">
+                        <ul class="d-flex align-items-center">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-icon" href="/cart" id="cart-icon">
+                                    <i class="bi bi-cart4"></i>
+                                    <span class="badge bg-success badge-number" id="cart-count">{{count.items}}</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown mx-3">
+                                <a class="nav-link nav-icon" href="#"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bi bi-bell"></i>
+                                    <span class="badge bg-primary badge-number">4</span>
+                                </a><!-- End Notification Icon -->
+
+                                <ul class="dropdown-menu dropdown-menu-end
+                                    dropdown-menu-arrow notifications">
+                                    <li class="dropdown-header">
+                                        You have 4 new notifications
+                                        <a href="#">
+                                            <span class="badge rounded-pill
+                                                bg-primary p-2 ms-2">
+                                                View
+                                                all
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="notification-item">
+                                        <i class="bi bi-exclamation-circle
+                                            text-warning"></i>
+                                        <div>
+                                            <h4>Lorem Ipsum</h4>
+                                            <p>Quae dolorem earum veritatis
+                                                oditseno</p>
+                                            <p>30 min. ago</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="notification-item">
+                                        <i class="bi bi-x-circle text-danger"></i>
+                                        <div>
+                                            <h4>Atque rerum nesciunt</h4>
+                                            <p>Quae dolorem earum veritatis
+                                                oditseno</p>
+                                            <p>1 hr. ago</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="notification-item">
+                                        <i class="bi bi-check-circle
+                                            text-success"></i>
+                                        <div>
+                                            <h4>Sit rerum fuga</h4>
+                                            <p>Quae dolorem earum veritatis
+                                                oditseno</p>
+                                            <p>2 hrs. ago</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li class="notification-item">
+                                        <i class="bi bi-info-circle
+                                            text-primary"></i>
+                                        <div>
+                                            <h4>Dicta reprehenderit</h4>
+                                            <p>Quae dolorem earum veritatis
+                                                oditseno</p>
+                                            <p>4 hrs. ago</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li class="dropdown-footer">
+                                        <a href="#"
+                                            class="text-decoration-none">Show
+                                            all notifications</a>
+                                    </li>
+
+                                </ul><!-- End Notification Dropdown Items -->
+                            </li><!-- End Notification Nav -->
+
+                            <li class="nav-item dropdown pe-3">
+
+                                <a class="nav-link nav-profile d-flex
+                                    align-items-center pe-0"
+                                    data-bs-toggle="dropdown">
+                                    <img src="/img/avatar/default-avt.jpg"
+                                        alt="Profile"
+                                        class="rounded-circle">
+                                    <span class="d-none d-md-block
+                                        dropdown-toggle ps-2"></span>
+                                </a><!-- End Profile Iamge Icon -->
+
+                                <ul class="dropdown-menu dropdown-menu-end
+                                    dropdown-menu-arrow profile">
+                                    <li class="dropdown-header">
+                                        <h6>Hi, {{user.username}}</h6>
+                                        <span></span>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item d-flex
+                                            align-items-center"
+                                            href="/user/profile">
+                                            <i class="bi bi-person"></i>
+                                            <span>My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item d-flex
+                                            align-items-center" href="/user/purchase">
+                                            <i class="bi bi-list-ul"></i>
+                                            <span>Order infomation</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item d-flex
+                                            align-items-center" href="/user/history">
+                                            <i class="bi bi-clock-history"></i>
+                                            <span>Purchase History</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+
+                                    <li>
+                                        <button type="submit"
+                                            class="dropdown-item" id="sign-out"><i
+                                                class="bi
+                                                    bi-box-arrow-right"></i>Sign
+                                            Out</button>
+                                    </li>
+                                </ul><!-- End Profile Dropdown Items -->
+                            </li><!-- End Profile Nav -->
+                        </ul>
+                    </nav>
+                    {{else}}
+                    <a href="/register" class="btn btn-outline-danger mx-2"
+                        role="button">
+                        Sign up
+                    </a>
+                    <a href="/login" class="btn btn-outline-secondary me-2"
+                        role="button">
+                        Sign in
+                    </a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark
+        ftco-navbar-light" id="ftco-navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#ftco-nav" aria-controls="ftco-nav"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <a href="javascript:void(0);" style="font-size:15px;"
+                    class="icon text-reset">&#9776;</a>
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/shop" class="nav-link">Shop</a></li>
+                    <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-nav order-4 d-block d-lg-none col"></div>
+        </div>
+    </nav>
+
+    <!-- END nav -->
+</header>

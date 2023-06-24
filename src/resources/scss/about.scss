@@ -1,0 +1,336 @@
+#about-main {
+	font-family: "Quicksand", sans-serif;
+	margin: 0 auto;
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.jumbotron {
+		width: 100%;
+		height: 530px;
+		background: white;
+		position: relative;
+		margin: 0;
+		z-index: 3;
+		border-radius: 0px;
+		.img-layer-container {
+			position: relative;
+			max-width: 1100px;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			img {
+				max-width: 95vw;
+			}
+			.team-image {
+				position: absolute;
+				img {
+					position: relative;
+					z-index: 3;
+				}
+			}
+			.circles-container {
+				position: absolute;
+				max-width: 1100px;
+				margin: 0 auto;
+				display: flex;
+				justify-content: center;
+				.img-1 {
+					position: absolute;
+					z-index: 2;
+				}
+				.img-2 {
+					position: absolute;
+					z-index: 5;
+				}
+			}
+		}
+		.jumbotron-inner {
+			max-width: 1350px;
+			margin: 0 auto;
+			a {
+				text-decoration: none;
+			}
+			.top-box {
+				max-width: 950px;
+				margin: 0 auto;
+				.content-box {
+					margin: 0 50px 35px;
+					h1 {
+						text-align: center;
+						color: #fff;
+						font-size: 40px;
+						font-weight: bold;
+						margin-bottom: 20px;
+					}
+					p {
+						text-align: center;
+						color: #6f7782;
+						font-size: 18px;
+						font-weight: 500;
+						margin: 0;
+						margin-bottom: 15px;
+					}
+				}
+			}
+		}
+	}
+	.story-container {
+		height: 100%;
+		width: 100%;
+		margin-top: 50px;
+		.container-divider {
+			margin-top: 100px;
+		}
+		.need-for-dx-container {
+			max-width: 950px;
+			margin: 0 auto;
+			padding: 0 20px;
+			.img-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				img {
+					margin: 50px auto;
+				}
+			}
+			h3 {
+				color: #074e8c;
+			}
+			p {
+				font-size: 15px;
+				margin-top: 20px;
+				color: #676a6c;
+			}
+			ul {
+				margin-top: 30px;
+				list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
+				li {
+					line-height: 25px;
+					padding-left: 5px;
+					color: #676a6c;
+				}
+			}
+		}
+		.our-tech-container {
+			max-width: 950px;
+			margin: 0 auto;
+			padding: 0 20px;
+			.img-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				img {
+					margin: 50px auto;
+				}
+			}
+			h3 {
+				color: #074e8c;
+			}
+			p {
+				font-size: 15px;
+				margin-top: 20px;
+				color: #676a6c;
+			}
+			ul {
+				margin-top: 30px;
+				list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
+				li {
+					line-height: 25px;
+					padding-left: 5px;
+					color: #676a6c;
+				}
+			}
+		}
+		.origin-story-container {
+			max-width: 950px;
+			margin: 0 auto;
+			padding: 0 20px;
+			.img-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				img {
+					margin: 50px auto;
+				}
+			}
+			h3 {
+				color: #074e8c;
+			}
+			p {
+				font-size: 15px;
+				margin-top: 20px;
+				color: #676a6c;
+			}
+			ul {
+				margin-top: 30px;
+				list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
+				li {
+					line-height: 25px;
+					padding-left: 5px;
+					color: #676a6c;
+				}
+			}
+		}
+		.today-container {
+			max-width: 950px;
+			margin: 0 auto;
+			padding: 0 20px;
+			.img-container {
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				img {
+					margin: 50px auto;
+				}
+			}
+			h3 {
+				color: #074e8c;
+			}
+			p {
+				font-size: 15px;
+				margin-top: 20px;
+				color: #676a6c;
+			}
+			ul {
+				margin-top: 30px;
+				list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
+				li {
+					line-height: 25px;
+					padding-left: 5px;
+					color: #676a6c;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1401px) {
+	#about-main {
+		.jumbotron {
+			height: 595px !important;
+			.jumbotron-inner {
+				max-width: 900px;
+				.top-box {
+					max-width: 900px;
+					.content-box {
+						margin-top: 30px;
+						margin-bottom: 50px;
+						h3 {
+							font-size: 35px;
+							margin: 5px 0px 20px 0px;
+							color: #6f7782;
+							font-weight: 300;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@media (max-width: 1000px) {
+	#about-main {
+		.jumbotron {
+			.img-layer-container {
+				width: 100%;
+			}
+		}
+	}
+}
+@media (max-width: 815px) {
+	#about-main {
+		.jumbotron {
+			.jumbotron-inner {
+				max-width: 600px;
+			}
+		}
+		.story-container {
+			.need-for-dx-container {
+				width: 100%;
+			}
+			.our-tech-container {
+				width: 100%;
+			}
+			.origin-story-container {
+				width: 100%;
+			}
+			.today-container {
+				width: 100%;
+			}
+		}
+	}
+}
+@media (max-width: 640px) {
+	#about-main {
+		.jumbotron {
+			height: 400px !important;
+			.jumbotron-inner {
+				max-width: 550px;
+				padding: 0 20px;
+			}
+			.img-1 {
+				display: none;
+			}
+			.img-2 {
+				display: none;
+			}
+			.team-image {
+				display: none;
+			}
+		}
+		.story-container {
+			margin-top: 80px;
+			.container-divider {
+				margin-top: 50px;
+			}
+			.need-for-dx-container {
+				p {
+					font-size: 13px;
+				}
+			}
+			.our-tech-container {
+				p {
+					font-size: 13px;
+				}
+			}
+			.origin-story-container {
+				p {
+					font-size: 13px;
+				}
+			}
+			.today-container {
+				p {
+					font-size: 13px;
+				}
+			}
+		}
+	}
+}
+@media (max-width: 420px) {
+	#about-main {
+		.jumbotron {
+			.jumbotron-inner {
+				max-width: 600px;
+				padding: 0 20px;
+			}
+		}
+	}
+}
+@media (max-width: 400px) {
+	#about-main {
+		.jumbotron {
+			.jumbotron-inner {
+				.top-box {
+					.content-box {
+						margin: 30px 0;
+						h1 {
+							font-size: 35px;
+						}
+						p {
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

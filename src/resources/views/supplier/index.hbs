@@ -1,0 +1,174 @@
+<section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">SUPPLIER LIST</h2>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <form class="ms-5 d-flex" method="get">
+            <input type="text" class="form-control me-2" name="search" placeholder="Search">
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+        <div class="me-5">
+            <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#addSupplierModal">
+                Add New Supplier
+            </button>
+        </div>
+    </div>
+    <div class="mb-5 mx-5">
+        <table class="mt-2 table table-bordered">
+            <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col" width="400em">Name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col" width="600em">Address</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="supplierList">
+                {{#each suppliers}}
+                <tr class="text-center align-middle" id="supplier_{{this.id}}">
+                    <td scope="row">{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>{{this.phone}}</td>
+                    <td width="500em">{{this.address}}</td>
+                    <td>{{this.email}}</td>
+                    <td>
+                        <button class="bi bi-pencil-square border-0 bg-white" onclick="UpdateSupplier({{this.id}})"
+                            data-bs-toggle="modal" data-bs-target="#updateSupplierModal"></button>
+                    </td>
+                    <td>
+                        <button class="bi bi-trash3 border-0 bg-white" onclick="DeleteSupplier({{this.id}})"></button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- Pop up add supplier --}}
+    <div class="modal fade" id="addSupplierModal" tabindex="-1" aria-labelledby="addSupplierModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addSupplierModalLabel">Adding Supplier</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier name --}}
+                                <label for="add-supplier-name">
+                                    <h6 class="fw-bold">Supplier Name</h6>
+                                </label>
+                                {{!-- Input supplier name --}}
+                                <input type="text" id="add-supplier-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddSupplierName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier phone --}}
+                                <label for="add-supplier-phone">
+                                    <h6 class="fw-bold">Supplier Phone</h6>
+                                </label>
+                                {{!-- Input supplier phone --}}
+                                <input type="text" id="add-supplier-phone" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddSupplierPhone"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier email --}}
+                                <label for="add-supplier-email">
+                                    <h6 class="fw-bold">Supplier Email</h6>
+                                </label>
+                                {{!-- Input supplier email --}}
+                                <input type="text" id="add-supplier-email" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddSupplierEmail"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier address --}}
+                                <label for="add-supplier-address">
+                                    <h6 class="fw-bold">Supplier Address</h6>
+                                </label>
+                                {{!-- Input supplier address --}}
+                                <textarea id="add-supplier-address" cols="30" rows="5" class="form-control"></textarea>
+                                <span class="text-danger" id="errorAddSupplierAddress"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonAddSupplier">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- Pop up update supplier --}}
+    <div class="modal fade" id="updateSupplierModal" tabindex="-1" aria-labelledby="updateSupplierModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateSupplierModalLabel">Updating Supplier</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier name --}}
+                                <label for="update-supplier-name">
+                                    <h6 class="fw-bold">Supplier Name</h6>
+                                </label>
+                                {{!-- Input supplier name --}}
+                                <input type="text" id="update-supplier-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateSupplierName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier phone --}}
+                                <label for="update-supplier-phone">
+                                    <h6 class="fw-bold">Supplier Phone</h6>
+                                </label>
+                                {{!-- Input supplier phone --}}
+                                <input type="text" id="update-supplier-phone" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateSupplierPhone"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier email --}}
+                                <label for="update-supplier-email">
+                                    <h6 class="fw-bold">Supplier Email</h6>
+                                </label>
+                                {{!-- Input supplier email --}}
+                                <input type="text" id="update-supplier-email" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateSupplierEmail"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label supplier address --}}
+                                <label for="update-supplier-address">
+                                    <h6 class="fw-bold">Supplier Address</h6>
+                                </label>
+                                {{!-- Input supplier address --}}
+                                <textarea id="update-supplier-address" cols="30" rows="5"
+                                    class="form-control"></textarea>
+                                <span class="text-danger" id="errorUpdateSupplierAddress"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonUpdateSupplier">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,116 @@
+<section class="py-2 h-100">
+	<div class="d-flex justify-content-center align-items-center">
+		<div class="card card-registration card-registration-2" style="border: none;">
+			<div class="card-body p-0" id="cartNew">
+				{{#if cart}}
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="px-5 py-4" id="shoppingCart">
+							<div class="d-flex justify-content-between align-items-center">
+								<h1 class="title-cart fw-bold mb-0 text-black">Shopping Cart</h1>
+							</div>
+							<hr class="my-2">
+
+							<div id="cartProduct">
+								{{#each cart}}
+								<div id="row_cart{{this.id}}">
+									<div class="mb-4 d-md-flex justify-content-between align-items-center">
+										<div class="col-md-4 col-lg-2 col-xl-2">
+											<a href="/detail/{{this.pid}}">
+												<img src="img/product/{{this.image}}" class="img-fluid rounded-3"
+													alt="{{this.name}}">
+											</a>
+										</div>
+
+										<div class="col-md-3 col-lg-3 col-xl-3">
+											<h6 class="text-muted">{{this.brand}}</h6>
+											<h6 class="text-black mb-0">{{this.name}}</h6>
+										</div>
+
+										{{!-- Update count --}}
+										<div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+											<div class="product-count">
+												<div class="d-flex">
+													<button class="qtyminus" onclick="minusProduct({{this.id}})">
+														-
+													</button>
+													<input type="text" name="quantity"
+														onkeydown="changeQuantity(event, {{this.id}})"
+														id="quantity{{this.id}}"
+														value="{{this.count}}" class="qty">
+													<button class="qtyplus" onclick="plusProduct({{this.id}})">
+														+
+													</button>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-md-1 col-lg-2 col-xl-2 mt-3 text-center">
+											<h6 class="mb-0" id="price{{this.id}}">${{this.unit_price}}</h6>
+										</div>
+
+										<div class="col-md-1 col-lg-1 col-xl-1 text-end">
+											<a onclick="deleteProduct({{this.id}})" class="text-muted">
+												<i class="fas fa-times"></i>
+											</a>
+										</div>
+									</div>
+									<hr class="my-2">
+								</div>
+								{{/each}}
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 bg-grey" id="summary">
+						<div class="p-5">
+							<h3 class="title-cart fw-bold mb-3 mt-2 pt-1">Summary</h3>
+							<hr class="my-4">
+							<div class="d-flex justify-content-between mb-4">
+								<h5 class="text-uppercase" id="count">items {{total.items}}</h5>
+							</div>
+
+							<h5 class="text-uppercase mb-3 fw-semibold">Shipping</h5>
+
+							<div class="mb-4 pb-2">
+								<select class="button-60">
+									<option value="1">Standard-Delivery- $5.00</option>
+								</select>
+							</div>
+
+							<hr class="my-4">
+
+							<div class="d-flex justify-content-between mb-5">
+								<h5 class="text-uppercase fw-semibold">Total price</h5>
+								<h5 id="total">${{total.total_price}}</h5>
+							</div>
+
+							<a href="/payment">
+								<button class="btn btn-dark btn-block btn-lg btnCheckout">
+									Checkout
+								</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				{{else}}
+				<div id="cartEmpty">
+					<img src="/img/cart/empty.gif"
+						style=" display: block; margin-left: auto; margin-right: auto; width: 50%;"
+						alt>
+					<p class="text-center"
+						style=" display: block; margin-left: auto; margin-right: auto; ">
+						Product Cart is empty</p>
+				</div>
+				{{/if}}
+				<div class="pt-5">
+					<h6 class="mb-3 back">
+						<a href="/shop" class="text-body fw-semibold">
+							<i class="fas fa-long-arrow-alt-left ms-5 me-2"></i>
+							Back to shop
+						</a>
+					</h6>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

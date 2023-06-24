@@ -1,0 +1,218 @@
+/* ==========================================================================
+   #Product
+   ========================================================================== */
+@import "https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil&display=swap";
+/* ==========================================================================
+      Card 
+      ========================================================================== */
+/* ==========================================================================
+      Button
+      ========================================================================== */
+.bg-body {
+  width: 22%; }
+
+.attentive {
+  font-family: "Quicksand", sans-serif;
+  text-align: center; }
+
+.title-shop h2 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold; }
+
+a {
+  color: black;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px; }
+
+a:hover {
+  color: red;
+  font-style: bold;
+  font-size: 20px; }
+
+h5 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold; }
+
+h2 {
+  font-family: "Quicksand", sans-serif; }
+
+.product-content .ul-color {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0; }
+  .product-content .ul-color li {
+    list-style: none;
+    float: left;
+    margin-right: 10px; }
+    .product-content .ul-color li:first-child {
+      margin-left: 0; }
+    .product-content .ul-color li:last-child {
+      margin-right: 0; }
+    .product-content .ul-color li a {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 100%; }
+    .product-content .ul-color li a.green-active {
+      background-color: green; }
+    .product-content .ul-color li a.blue {
+      background-color: blue; }
+    .product-content .ul-color li a.yellow {
+      background-color: yellow; }
+
+select option {
+  font-family: "Quicksand", sans-serif; }
+
+.select .form-control {
+  appearance: revert;
+  width: 150%;
+  padding: 0;
+  font-size: medium; }
+
+.filter {
+  padding-right: 50px; }
+
+.product-grid .title-cart {
+  font-family: "Quicksand", sans-serif;
+  text-align: center; }
+
+.product-grid .product-image {
+  overflow: hidden;
+  position: relative;
+  z-index: 1; }
+  .product-grid .product-image a.image {
+    display: block; }
+  .product-grid .product-image img {
+    width: 100%;
+    height: auto; }
+
+.product-grid .product-discount-label {
+  color: #fff;
+  background: black;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 25px;
+  padding: 0 20px;
+  position: absolute;
+  top: 10px;
+  left: 0; }
+
+.product-grid .product-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 10px;
+  right: -50%;
+  transition: all 0.5s ease 0s; }
+  .product-grid .product-links li a {
+    color: #333;
+    background: transparent;
+    font-size: 17px;
+    line-height: 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid #333;
+    border-bottom: none;
+    display: block;
+    transition: all 0.3s;
+    text-align: center; }
+    .product-grid .product-links li a:hover {
+      color: #fff;
+      background: #333; }
+  .product-grid .product-links li:last-child a {
+    border-bottom: 1px solid #333; }
+
+.product-grid:hover .product-links {
+  right: 5px; }
+
+.product-grid:hover .add-to-cart {
+  bottom: 0; }
+
+.product-grid .add-to-cart {
+  background: black;
+  color: #fff;
+  font-size: 80%;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 100%;
+  padding: 10px 26px;
+  position: absolute;
+  left: 0;
+  bottom: -60px;
+  transition: all 0.3s ease 0s;
+  font-family: "Quicksand", sans-serif; }
+  .product-grid .add-to-cart:hover {
+    background: #bababa;
+    text-shadow: 4px 4px rgba(0, 0, 0, 0.2);
+    border: #bababa; }
+
+.product-grid .product-content {
+  background: #fff;
+  padding: 15px;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1) inset; }
+
+.product-grid .title {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 7px; }
+  .product-grid .title a {
+    color: #777;
+    transition: all 0.3s ease 0s; }
+    .product-grid .title a:hover {
+      color: black; }
+
+.product-grid .price {
+  color: #0d0d0d;
+  font-size: 14px;
+  font-weight: 600; }
+  .product-grid .price span {
+    color: #888;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: line-through; }
+
+.size {
+  background-color: white; }
+
+.input-group {
+  padding-top: 5%;
+  border-bottom: 2px solid #ccc;
+  display: block; }
+
+.btn-home {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 25px;
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid #dbdbdb; }
+  .btn-home:hover {
+    background: black;
+    color: white; }
+
+.product {
+  padding: 1.5rem !important; }
+
+.btn-radius {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+@media screen and (max-width: 768px) {
+  .product {
+    padding: 20px !important;
+    margin-right: -15px; }
+  .product-grid {
+    margin-bottom: 30px; }
+  .input-group {
+    font-size: 18px !important;
+    width: 155px;
+    margin-left: 59%;
+    padding-top: 0; }
+  .title {
+    font-size: 10px; }
+  .sortby {
+    font-size: 1px; } }

@@ -1,0 +1,382 @@
+<section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">PRODUCT LIST</h2>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <form class="ms-5 d-flex" method="get">
+            <input type="text" class="form-control me-2" name="search" placeholder="Search">
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+        <div class="me-5">
+            <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#addProductModal">
+                Add New Product
+            </button>
+        </div>
+    </div>
+    <div class="mb-5 mx-5">
+        <table class="mt-2 table table-bordered">
+            <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Supplier</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="productList">
+                {{#each products}}
+                <tr class="text-center align-middle" id="product_{{this.id}}">
+                    <td scope="row">{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>${{this.price}}</td>
+                    <td>{{this.for_gender}}</td>
+                    <td>{{this.quantity}}</td>
+                    <td>{{this.brand_name}}</td>
+                    <td>{{this.branch_name}}</td>
+                    <td>{{this.supplier_name}}</td>
+                    <td>
+                        <img src="/img/product/{{this.image}}" alt="product's image" width="150">
+                    </td>
+                    <td>
+                        <button class="bi bi-pencil-square border-0 bg-white" onclick="UpdateProduct({{this.id}})"
+                            data-bs-toggle="modal" data-bs-target="#updateProductModal"></button>
+                    </td>
+                    <td>
+                        <button class="bi bi-trash3 border-0 bg-white" onclick="DeleteProduct({{this.id}})"></button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- Pop up add product --}}
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="addProductModalLabel">Adding Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12 row">
+                            <div class="col-6">
+                                <div class="forms-inputs mt-3">
+                                    {{!-- Label product name --}}
+                                    <label for="add-product-name">
+                                        <h6 class="fw-bold">Product Name</h6>
+                                    </label>
+                                    {{!-- Input product name --}}
+                                    <input type="text" id="add-product-name" class="form-control" autocomplete="off">
+                                    <span class="text-danger" id="errorAddProductName"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-small-description">
+                                        <h6 class="fw-bold">Small Description</h6>
+                                    </label>
+                                    <input type="text" name="add-product-small-description"
+                                        id="add-product-small-description" class="form-control" />
+                                    <span class="text-danger" id="errorAddProductSmallDescription"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-detail-description">
+                                        <h6 class="fw-bold">Detail Description</h6>
+                                    </label>
+                                    <textarea name="add-product-detail-description" id="add-product-detail-description"
+                                        class="form-control" rows="5"></textarea>
+                                    <span class="text-danger" id="errorAddProductDetailDescription"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-inputs mt-3 col-6">
+                                        <label for="add-product-price">
+                                            <h6 class="fw-bold">Price</h6>
+                                        </label>
+                                        <input type="text" name="add-product-price" id="add-product-price" step="0.01"
+                                            class="form-control" />
+                                        <span class="text-danger" id="errorAddProductPrice"></span>
+                                    </div>
+
+                                    <div class="form-inputs mt-3 col-6">
+                                        <label for="add-product-quantity">
+                                            <h6 class="fw-bold">Quantity</h6>
+                                        </label>
+                                        <input type="text" name="add-product-quantity" id="add-product-quantity"
+                                            class="form-control">
+                                        <span class="text-danger" id="errorAddProductQuantity"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-brand">
+                                        <h6 class="fw-bold">Choose Brand</h6>
+                                    </label>
+                                    <select name='add-product-brand' id="add-product-brand" class='form-control'>
+                                        <option value='0'>Please choose band</option>
+                                        {{#each brands}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorAddProductBrand"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-branch">
+                                        <h6 class="fw-bold">Choose Branch</h6>
+                                    </label>
+                                    <select name='add-product-branch' id="add-product-branch" class='form-control'>
+                                        <option value='0'>Please choose branch</option>
+                                        {{#each branches}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorAddProductBranch"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-supplier">
+                                        <h6 class="fw-bold">Choose Supplier</h6>
+                                    </label>
+                                    <select name='add-product-supplier' id="add-product-supplier" class='form-control'>
+                                        <option value='0'>Please choose supplier</option>
+                                        {{#each suppliers}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorAddProductSupplier"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="add-product-gender">
+                                        <h6 class="fw-bold">Gender</h6>
+                                    </label>
+                                    <div class="d-lg-flex mt-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="add-product-gender"
+                                                id="MaleGender" value="male">
+                                            <label class="form-check-label" for="MaleGender">Male</label>
+                                        </div>
+
+                                        <div class="form-check mx-lg-5">
+                                            <input class="form-check-input" type="radio" name="add-product-gender"
+                                                id="FemaleGender" value="female">
+                                            <label class="form-check-label" for="FemaleGender">Female</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="add-product-gender"
+                                                id="BothGender" value="unisex">
+                                            <label class="form-check-label" for="BothGender">Unisex</label>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" id="errorAddProductGender"></span>
+                                </div>
+
+                                <div class="forms-inputs mt-3">
+                                    {{!-- Label product image --}}
+                                    <label for="add-product-image">
+                                        <h6 class="fw-bold">Product Image</h6>
+                                    </label>
+                                    {{!-- Input product image --}}
+                                    <input type="file" id="add-product-image" class="form-control">
+                                    <span class="text-danger" id="errorAddProductImage"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonAddProduct">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- Pop up update product --}}
+    <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateProductModalLabel">Updating Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12 row">
+                            <div class="col-6">
+                                <div class="forms-inputs mt-3">
+                                    {{!-- Label product name --}}
+                                    <label for="name">
+                                        <h6 class="fw-bold">Product Name</h6>
+                                    </label>
+                                    {{!-- Input product name --}}
+                                    <input type="text" id="update-product-name" class="form-control" autocomplete="off">
+                                    <span class="text-danger" id="errorUpdateProductName"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-small-description">
+                                        <h6 class="fw-bold">Small Description</h6>
+                                    </label>
+                                    <input type="text" name="update-product-small-description"
+                                        id="update-product-small-description" class="form-control" />
+                                    <span class="text-danger" id="errorUpdateProductSmallDescription"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-detail-description">
+                                        <h6 class="fw-bold">Detail Description</h6>
+                                    </label>
+                                    <textarea name="update-product-detail-description"
+                                        id="update-product-detail-description" class="form-control" rows="5"></textarea>
+                                    <span class="text-danger" id="errorUpdateProductDetailDescription"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-inputs mt-3 col-6">
+                                        <label for="update-product-price">
+                                            <h6 class="fw-bold">Price</h6>
+                                        </label>
+                                        <input type="text" name="update-product-price" id="update-product-price"
+                                            class="form-control" />
+                                        <span class="text-danger" id="errorUpdateProductPrice"></span>
+                                    </div>
+
+                                    <div class="form-inputs mt-3 col-6">
+                                        <label for="update-product-quantity">
+                                            <h6 class="fw-bold">Quantity</h6>
+                                        </label>
+                                        <input type="text" name="update-product-quantity" id="update-product-quantity"
+                                            class="form-control">
+                                        <span class="text-danger" id="errorUpdateProductQuantity"></span>
+                                    </div>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-status">
+                                        <h6 class="fw-bold">Status</h6>
+                                    </label>
+                                    <div class="d-lg-flex mt-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="update-product-status"
+                                                id="OnSaleStatus" value="true">
+                                            <label class="form-check-label" for="OnSaleStatus">Still In Business</label>
+                                        </div>
+
+                                        <div class="form-check mx-lg-5">
+                                            <input class="form-check-input" type="radio" name="update-product-status"
+                                                id="BusinessSuspensionStatus" value="false">
+                                            <label class="form-check-label" for="BusinessSuspensionStatus">Business Suspension</label>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" id="errorUpdateProductStatus"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-brand">
+                                        <h6 class="fw-bold">Choose Brand</h6>
+                                    </label>
+                                    <select name='update-product-brand' id="update-product-brand" class='form-control'>
+                                        <option value='0'>Please choose brand</option>
+                                        {{#each brands}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorUpdateProductBrand"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-branch">
+                                        <h6 class="fw-bold">Choose Branch</h6>
+                                    </label>
+                                    <select name='update-product-branch' id="update-product-branch"
+                                        class='form-control'>
+                                        <option value='0'>Please choose branch</option>
+                                        {{#each branches}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorUpdateProductBranch"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-supplier">
+                                        <h6 class="fw-bold">Choose Supplier</h6>
+                                    </label>
+                                    <select name='update-product-supplier' id="update-product-supplier"
+                                        class='form-control'>
+                                        <option value='0'>Please choose supplier</option>
+                                        {{#each suppliers}}
+                                        <option value='{{this.id}}'>{{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                    <span class="text-danger" id="errorUpdateProductSupplier"></span>
+                                </div>
+
+                                <div class="form-inputs mt-3">
+                                    <label for="update-product-gender">
+                                        <h6 class="fw-bold">Gender</h6>
+                                    </label>
+                                    <div class="d-lg-flex mt-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="update-product-gender"
+                                                id="MaleGender" value="male">
+                                            <label class="form-check-label" for="MaleGender">Male</label>
+                                        </div>
+
+                                        <div class="form-check mx-lg-5">
+                                            <input class="form-check-input" type="radio" name="update-product-gender"
+                                                id="FemaleGender" value="female">
+                                            <label class="form-check-label" for="FemaleGender">Female</label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="update-product-gender"
+                                                id="BothGender" value="unisex">
+                                            <label class="form-check-label" for="BothGender">Unisex</label>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" id="errorUpdateProductGender"></span>
+                                </div>
+
+                                <div class="forms-inputs mt-3">
+                                    {{!-- Label product image --}}
+                                    <label for="image">
+                                        <h6 class="fw-bold">Product Image</h6>
+                                    </label>
+                                    {{!-- Input product image --}}
+                                    <input type="file" id="update-product-image" class="form-control">
+                                    <div>
+                                        <img src="" id="display-image-update-product" alt="product's image" class="mt-3"
+                                            width="100">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonUpdateProduct">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,68 @@
+<div class="row py-4 px-3">
+    <div class="col-md-8">
+        <div class="left border">
+            <div class="row">
+                <span class="header">Payment</span>
+            </div>
+            <p id="payment-error" class="text-danger text-center"></p>
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <span>First name:</span>
+                        <input value="{{user.first_name}}" id="firstName">
+                    </div>
+                    <div class="col-6">
+                        <span>Last name:</span>
+                        <input value="{{user.last_name}}" id="lastName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <span>Telephone:</span>
+                        <input value="{{user.telephone}}" id="telephone">
+                    </div>
+                    <div class="col-6">
+                        <span>Delivery Local:</span>
+                        <input value="{{user.address}}" id="address">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="right border px-4">
+            <div class="header">Order Summary</div>
+            <p>{{detail.items}} items</p>
+            {{#each products}}
+            <div class="row item">
+                <div class="col-4 align-self-center">
+                    <img class="img-fluid"
+                        src="/img/product/{{this.image}}">
+
+                </div>
+                <div class="col-8">
+                    <div class="row"><b>$ {{this.price}}</b></div>
+                    <div class="row text-muted">{{this.name}}</div>
+                    <div class="row">Quantity: {{this.count}}</div>
+                </div>
+            </div>
+            {{/each}}
+            <hr>
+            <div class="row lower">
+                <div class="col text-left">Subtotal</div>
+                <div class="col text-right">${{detail.subtotal}}</div>
+            </div>
+            <div class="row lower">
+                <div class="col text-left">Delivery</div>
+                <div class="col text-right">$5.00</div>
+            </div>
+            <div class="row lower">
+                <div class="col text-left"><b>Total to pay</b></div>
+                <div class="col text-right"><b>${{detail.total_price}}</b></div>
+            </div>
+            <input type="submit"
+                class="btn btn-dark btn-block btn-lg btnCheckout"
+                id="btn-payment" value="PAYMENT">
+        </div>
+    </div>
+</div>

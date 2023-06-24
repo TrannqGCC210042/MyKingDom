@@ -1,0 +1,67 @@
+ <section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">STATISTIC LIST</h2>
+        </div>
+    </div>
+
+    {{!-- REVENUE --}}
+    <div class="ms-5 mt-4 lh-1 mb-2">
+        <p class="title">REVENUE</p>
+    </div>
+    <canvas class="m-auto" id="myChart" style="width:100%;max-width:600px"></canvas>
+    <div class="text-center fw-bold" id="revenue"></div>
+
+    {{!-- PRODUCT --}}
+    <div class="ms-5 mt-4 lh-1 mb-2">
+        <p class="title">BEST SELLING</p>
+    </div>
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <div class="row">
+                {{#each bestSelling}}
+                <div class="col-lg-3 column" data-aos="fade-up">
+                    <div class="box">
+                        <img src="/img/product/{{this.image}}"
+                            class="img-fluid image mb-2" alt>
+                        <p class="text-center fw-bold">{{this.name}}</p>
+                        <div class="row px-3">
+                            <div class="col-6"><p>Quantity:
+                                    {{this.quantity_sale}} items</p></div>
+                            <div class="col-6"><p>Revenue: {{this.revenue}}</p></div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    {{!-- BRAND --}}
+    <div class="ms-5 mt-4 lh-1 mb-2">
+        <p class="title">HOT BRAND</p>
+    </div>
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <div class="row">
+                {{#each bestSellingBrand}}
+                <div class="col-lg-2" data-aos="fade-up">
+                    <div class="box">
+                        <div class="text-center">
+                            <img src="/img/brand/{{this.image}}"
+                                class="img-fluid image mb-2"
+                                alt="{{this.name}}">
+                        </div>
+                        <p class="text-center fw-bold">{{this.name}}</p>
+                        <div class="row px-3">
+                            <div class="col-6"><p>Quantity:
+                                    {{this.quantity_sale}} items</p></div>
+                            <div class="col-6"><p>Revenue: {{this.revenue}}</p></div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+</section>

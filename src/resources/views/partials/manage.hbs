@@ -1,0 +1,111 @@
+<style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+    .merriweather {
+        font-family: 'Merriweather', serif;
+        font-size: 26px;
+        color: black;
+    }
+    .merriweather:hover{
+        font-size: 26.5px;
+        color: grey;
+    }
+    .title{
+        font-family: 'Merriweather', serif;
+        font-size: 20px;
+        color: black;
+    }
+    .menu-control {
+        display: flex;
+    }
+
+    .menu-bar {
+        display: block;
+    }
+
+    .menu-bar {
+        display: flex;
+        justify-content: left;
+        list-style-type: none;
+        background-color: #000;
+    }
+
+    .menu-item {
+        padding: 20px;
+    }
+
+    .menu-item:hover {
+        background-color: #bababa;
+        transition: 0.3s;
+    }
+
+    .menu-name {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .menu-name:hover {
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .animate__animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+
+    .animate__fadeInUp {
+        animation-name: fadeInUp;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translate3d(0, 30%, 0);
+        }
+
+        to {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+<ul class="menu-bar mb-0 justify-content-center">
+    <div class="menu-control">
+        <a href="/manage/statistic" class="menu-name">
+            <li class="menu-item">
+                Statistic management
+            </li>
+        </a>
+        <a href="/manage/order" class="menu-name">
+            <li class="menu-item">
+                Order management
+            </li>
+        </a>
+        <a href="/manage/brand" class="menu-name">
+            <li class="menu-item">
+                Brand management
+            </li>
+        </a>
+        <a href="/manage/branch" class="menu-name">
+            <li class="menu-item">
+                Branch management
+            </li>
+        </a>
+        <a href="/manage/supplier" class="menu-name">
+            <li class="menu-item">
+                Supplier management
+            </li>
+        </a>
+        <a href="/manage/product" class="menu-name">
+            <li class="menu-item">
+                Product management
+            </li>
+        </a>
+        <a class="menu-name" style="cursor: pointer;" id="sign-out">
+            <li class="menu-item">
+                Log out
+            </li>
+        </a>
+    </div>
+</ul>

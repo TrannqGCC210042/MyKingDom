@@ -1,0 +1,348 @@
+<div class="container-fluid profile">
+    <main role="main" class="pb-3">
+        <section class="main container-fluid my-3">
+            <section class="section profile">
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div
+                                class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+                                <img
+                                    src="/img/avatar/default-avt.jpg"
+                                    alt="Profile"
+                                    class="rounded-circle">
+                                <h2>{{user.first_name}} {{user.last_name}}</h2>
+                                <div class="social-links mt-2">
+                                    <a href="#" class="twitter"><i
+                                            class="bi bi-twitter"></i></a>
+                                    <a href="#" class="facebook"><i
+                                            class="bi bi-facebook"></i></a>
+                                    <a href="#" class="instagram"><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#" class="linkedin"><i
+                                            class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-8">
+
+                        <div class="card">
+                            <div class="card-body pt-3">
+                                <!-- Bordered Tabs -->
+                                <ul class="nav nav-tabs nav-tabs-bordered">
+
+                                    <li class="nav-item">
+                                        <button class="nav-link active"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#profile-overview">
+                                            Overview
+                                        </button>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <button class="nav-link"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#profile-edit">
+                                            Edit
+                                            Profile
+                                        </button>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <button class="nav-link"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#profile-change-password">Change
+                                            Password</button>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content pt-2">
+
+                                    <div
+                                        class="tab-pane fade show active profile-overview"
+                                        id="profile-overview">
+                                        <h5 class="card-title fw-bold">PROFILE
+                                            DETAILS</h5>
+                                        <div class="row">
+                                            <div
+                                                class="col-lg-2 col-md-4 label ">First
+                                                Name</div>
+                                            <div class="col-lg-10 col-md-8">{{user.first_name}}</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div
+                                                class="col-lg-2 col-md-4 label ">Last
+                                                Name</div>
+                                            <div class="col-lg-10 col-md-8">{{user.last_name}}</div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-4 label">Female</div>
+                                            {{#ifCond user.gender '==' null}}
+                                            <div class="col-lg-10 col-md-8">Updating...</div>
+                                            {{else}}
+                                                {{#ifCond user.gender '==' true }}
+                                                <div class="col-lg-10 col-md-8">Female</div>
+                                                {{else}}
+                                                <div class="col-lg-10 col-md-8">Female</div>
+                                                {{/ifCond}}
+                                            {{/ifCond}}
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-4 label">Birthday</div>
+                                            {{#ifCond user.dayofbirth '=='
+                                            null}}
+                                            <div class="col-lg-10 col-md-8">Updating...</div>
+                                            {{else}}
+                                            <div class="col-lg-10 col-md-8">{{user.dayofbirth}}</div>
+                                            {{/ifCond}}
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-4 label">Address</div>
+                                            {{#ifCond user.address '==' null}}
+                                            <div class="col-lg-10 col-md-8">Updating...</div>
+                                            {{else}}
+                                            <div class="col-lg-10 col-md-8">{{user.address}}</div>
+                                            {{/ifCond}}
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-4 label">Phone</div>
+                                            {{#ifCond user.telephone '==' null}}
+                                            <div class="col-lg-10 col-md-8">Updating...</div>
+                                            {{else}}
+                                            <div class="col-lg-10 col-md-8">{{user.telephone}}</div>
+                                            {{/ifCond}}
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-2 col-md-4 label">Email</div>
+                                            {{#ifCond user.email '==' null}}
+                                            <div class="col-lg-10 col-md-8">Updating...</div>
+                                            {{else}}
+                                            <div class="col-lg-10 col-md-8">{{user.email}}</div>
+
+                                            {{/ifCond}}
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade profile-edit pt-3"
+                                        id="profile-edit">
+
+                                        <!-- Profile Edit Form -->
+                                        <form id="profile-form"
+                                            enctype="multipart/form-data">
+                                            <p id="profile-error"
+                                                class="text-danger text-center"></p>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="first-name">First
+                                                    Name</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input class="form-control"
+                                                        type="text"
+                                                        id="first-name"
+                                                        name="firstName"
+                                                        autocomplete="off"
+                                                        value="{{user.first_name}}" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="last-name">Last
+                                                    Name</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input class="form-control"
+                                                        type="text"
+                                                        id="last-name"
+                                                        name="lastName"
+                                                        autocomplete="off"
+                                                        value="{{user.last_name}}" />
+                                                </div>
+                                            </div>
+
+                                            <fieldset class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label">Gender</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <div class="form-check">
+                                                        <input type="hidden"
+                                                            id="isGender"
+                                                            value="{{user.gender}}">
+                                                        <input
+                                                            class="form-check-input"
+                                                            type="radio"
+                                                            id="maleGender"
+                                                            checked
+                                                            name="gender"
+                                                            value="false" />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="maleGender">
+                                                            Male
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input
+                                                            class="form-check-input"
+                                                            id="femaleGender"
+                                                            type="radio"
+                                                            name="gender"
+                                                            value="true" />
+                                                        <label
+                                                            class="form-check-label"
+                                                            for="femaleGender">
+                                                            Female
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="birthday">Birthday</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input type="date"
+                                                        class="form-control"
+                                                        id="birthday"
+                                                        name="birthday"
+                                                        value="{{dateFormat user.birthday 'YYYY-MM-DD'}}">
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="address">Address</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input class="form-control"
+                                                        type="text" id="address"
+                                                        name="address"
+                                                        autocomplete="off"
+                                                        value="{{user.address}}" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="telephone">Phone
+                                                    number</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input class="form-control"
+                                                        type="tel"
+                                                        id="telephone"
+                                                        name="telephone"
+                                                        autocomplete="off"
+                                                        value="{{user.telephone}}" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label
+                                                    class="col-md-4 col-lg-3 col-form-label"
+                                                    for="email">Email</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input class="form-control"
+                                                        readonly disabled type="email"
+                                                        id="email"
+                                                        name="email"
+                                                        value="{{user.email}}" />
+                                                </div>
+                                            </div>
+
+                                            <div class="text-end">
+                                                <button
+                                                    id="chagePasswordButton"
+                                                    type="submit"
+                                                    class="btn btn-dark">Save
+                                                    Changes</button>
+                                            </div>
+                                        </form>
+                                        <!-- End Profile Edit Form -->
+                                    </div>
+                                    <div class="tab-pane fade pt-3"
+                                        id="profile-change-password">
+                                        <p id="change-password-error"
+                                            class="text-danger text-center"></p>
+                                        <!-- Change Password Form -->
+                                        <form id="change-password-form">
+                                            <div class="row mb-3">
+                                                <label for="oldPassword"
+                                                    class="col-md-4 col-lg-3 col-form-label">Current
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="password"
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="oldPassword">
+                                                </div>
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-8">
+                                                    <p id="oldPasswordError"
+                                                        class="text-danger"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="newPassword"
+                                                    class="col-md-4 col-lg-3 col-form-label">New
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input name="newpassword"
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="newPassword">
+                                                </div>
+                                                <div class="col-lg-3"></div>
+                                                <div class="col-lg-8">
+                                                    <p id="newPasswordError"
+                                                        class="text-danger"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-3">
+                                                <label for="confirmPassword"
+                                                    class="col-md-4 col-lg-3 col-form-label">Re-enter
+                                                    New
+                                                    Password</label>
+                                                <div class="col-md-8 col-lg-9">
+                                                    <input
+                                                        name="confirmPassword"
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="confirmPassword">
+                                                </div>
+                                            </div>
+
+                                            <div class="text-end">
+                                                <button type="submit"
+                                                    class="btn btn-dark">Change
+                                                    Password</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- End Bordered Tabs -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+        <!-- End #main -->
+    </main>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My King Dom - {{title}}</title>
+        {{!-- icon --}}
+        <link rel="shortcut icon" href="/img/logo/icon.png" type="image/x-icon">
+
+        <!-- Vendor CSS Files -->
+        <link href="/vendor/aos/aos.css" rel="stylesheet">
+        <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/vendor/bootstrap-icons/bootstrap-icons.css"
+            rel="stylesheet">
+        <link href="/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+        {{!-- Font Awesome --}}
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+            integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Google Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Quicksand:wght@300;400&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="/fonts/icomoon/style.css">
+
+        <!-- Style css -->
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
+        <link rel="stylesheet" href="/css/loader.css">
+        <link rel="stylesheet" href="/css/{{style}}">
+    </head>
+
+    <body>
+        {{#if user}}
+        {{#if user.role}}
+        {{> manage}}
+        {{else}}
+        {{> header}}
+        {{/if}}
+        {{else}}
+        {{> header}}
+        {{/if}}
+
+        {{{body}}}
+
+        {{#if user}}
+        {{#unless user.role}}
+        {{> footer}}
+        {{/unless}}
+        {{else}}
+        {{> footer}}
+        {{/if}}
+
+        {{!-- canvas --}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+        <!-- Vendor JS Files -->
+        <script src="/vendor/aos/aos.js"></script>
+        <script src="/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="/vendor/swiper/swiper-bundle.min.js"></script>
+
+        {{!-- Bootstrap JS --}}
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+            integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+
+        {{!-- Vendor JS Files --}}
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="/js/checkValid.js"></script>
+        <script src="/js/{{script}}"></script>
+    </body>
+
+</html>

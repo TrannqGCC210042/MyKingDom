@@ -1,0 +1,139 @@
+<section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">BRAND LIST</h2>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between">
+        <form class="ms-5 d-flex" method="get">
+            <input type="text" class="form-control me-2" name="search" placeholder="Search">
+            <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+        <div class="me-5">
+            <button class="btn btn-dark" type="button" data-bs-toggle="modal" data-bs-target="#addBrandModal">
+                Add New Brand
+            </button>
+        </div>
+    </div>
+    <div class="mb-5 mx-5">
+        <table class="mt-2 table table-bordered">
+            <thead class="bg-dark text-white text-center">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col" width="500em">Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="brandList">
+                {{#if brands}}
+                {{#each brands}}
+                <tr class="text-center align-middle" id="brand_{{this.id}}">
+                    <td scope="row">{{this.id}}</td>
+                    <td>{{this.name}}</td>
+                    <td>
+                        <img src="/img/brand/{{this.image}}" alt="brand's image">
+                    </td>
+                    <td>
+                        <button class="bi bi-pencil-square border-0 bg-white" onclick="UpdateBrand({{this.id}})"
+                            data-bs-toggle="modal" data-bs-target="#updateBrandModal"></button>
+                    </td>
+                    <td>
+                        <button class="bi bi-trash3 border-0 bg-white" onclick="DeleteBrand({{this.id}})"></button>
+                    </td>
+                </tr>
+                {{/each}}
+                {{else}}
+                <tr>
+                    <td colspan="5" class="text-center fw-bold">No data found!</td>
+                </tr>
+                {{/if}}
+            </tbody>
+        </table>
+    </div>
+    {{!-- Pop up add brand --}}
+    <div class="modal fade" id="addBrandModal" tabindex="-1" aria-labelledby="addBrandModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBrandModalLabel">Adding Brand</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label brand name --}}
+                                <label for="add-brand-name">
+                                    <h6 class="fw-bold">Brand Name</h6>
+                                </label>
+                                {{!-- Input brand name --}}
+                                <input type="text" id="add-brand-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorAddBrandName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label brand image --}}
+                                <label for="add-brand-image">
+                                    <h6 class="fw-bold">Brand Image</h6>
+                                </label>
+                                {{!-- Input brand image --}}
+                                <input type="file" id="add-brand-image" class="form-control">
+                                <span class="text-danger" id="errorAddBrandImage"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonAddBrand">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- Pop up update brand --}}
+    <div class="modal fade" id="updateBrandModal" tabindex="-1" aria-labelledby="updateBrandModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateBrandModalLabel">Updating Brand</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-md-12">
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label brand name --}}
+                                <label for="update-brand-name">
+                                    <h6 class="fw-bold">Brand Name</h6>
+                                </label>
+                                {{!-- Input brand name --}}
+                                <input type="text" id="update-brand-name" class="form-control" autocomplete="off">
+                                <span class="text-danger" id="errorUpdateBrandName"></span>
+                            </div>
+
+                            <div class="forms-inputs mt-3">
+                                {{!-- Label brand image --}}
+                                <label for="update-brand-image">
+                                    <h6 class="fw-bold">Brand Image</h6>
+                                </label>
+                                <div>
+                                    <img src="" id="display-image-update-brand" alt="brand's image" class="mb-3">
+                                </div>
+                                {{!-- Input brand image --}}
+                                <input type="file" id="update-brand-image" class="form-control">
+                                <span class="text-danger" id="errorUpdateBrandImage"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success" id="buttonUpdateBrand">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

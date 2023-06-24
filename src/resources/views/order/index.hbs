@@ -1,0 +1,53 @@
+<section class="header">
+    <div class="mt-4 mb-3">
+        <div class="text-center lh-1 mb-2">
+            <h2 class="merriweather">ORDER LIST</h2>
+        </div>
+    </div>
+    <div class="mb-5 mx-5">
+        <table class="mt-4 table table-bordered text-center	">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Delivery Date</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Delivery Local</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">OrderDetail</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each orders}}
+                <tr class="align-middle">
+                    <th scope="row">{{this.id}}</th>
+                    <td>{{dateFormat this.order_date "YYYY-MM-DD, HH:mm:ss"}}</td>
+                    <td>{{dateFormat this.delivery_date "YYYY-MM-DD, HH:mm:ss"}}</td>
+                    <td>{{this.cust_name}}</td>
+                    <td>{{this.cust_phone}}</td>
+                    <td width="500em">{{this.delivery_local}}</td>
+                    <td>${{this.total}}</td>
+                    <td>
+                        <a href="/manage/order/{{this.id}}" class="text-decoration-none text-reset"
+                            style="cursor: pointer;">
+                            <i class="bi bi-arrow-right-square"></i>
+                            <p class="ms-2">See more</p>
+                        </a>
+                    </td>
+                    {{#if this.status}}
+                    <td>
+                        <button type="button" class="btn btn-success fa fa-check"></button>
+                    </td>
+                    {{else}}
+                    <td>
+                        <button type="button" class="btn btn-warning fa fa-exclamation-triangle" id="confirmOrder_{{this.id}}" onclick="confirmOrder({{this.id}})"></button>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>

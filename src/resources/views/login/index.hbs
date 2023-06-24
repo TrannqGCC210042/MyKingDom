@@ -1,0 +1,61 @@
+<div class="container login p-5">
+  <h2 class="form-title fw-bold">SIGN-IN</h2>
+  <p id="login-error" class="text-danger text-center"></p>
+  <form id="login-form" method="post">
+    <div>
+      <label for="email" class="form-label">Username</label>
+      <div class="space"><input style="padding: 10px" class="button button--piyo input-login" type="text" id="login-username"></div>
+      <div class="button__wrapper">
+        <span class="button__text"></span>
+      </div>
+      </input>
+    </div>
+    <div>
+      <label for="password" class="form-label mt-3">Password</label>
+      <div class="space"><input style="padding: 10px" class="button button--piyo input-login" type="password" id="login-password"></div>
+      <div class="button__wrapper">
+        <span class="button__text"></span>
+      </div>
+      </input>
+    </div>
+    <div class="mt-5 pt-3">
+      <button type="submit" class="button button--pen"> 
+        <div class="button__wrapper">
+          <span class="button__text fw-bold">SIGN-IN</span>
+        </div>
+        <div class="characterBox">
+          <div class="character wakeup">
+            <div class="character__face"></div>
+            <div class="charactor__face2"></div>
+          </div>
+          <div class="character wakeup">
+            <div class="character__face"></div>
+            <div class="charactor__face2"></div>
+          </div>
+          <div class="character">
+            <div class="character__face"></div>
+            <div class="charactor__face2"></div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </form>
+  <div class="text-center pt-4">Do not have an account? <a href="/register">Register</a></div>
+  <div class="login-methods">
+    <hr>
+    <div class="text">Or login with:</div>
+    <div class="login_icon">
+      <div class="google-btn">
+        <a href="/login/google">
+          <div class="google-icon-wrapper">
+            <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+          </div>
+          <p class="btn-text"><b>Sign in with google</b></p>
+        </a>
+      </div>
+      <div class="text-center">
+        <a href="/login/facebook" class="fb connect d-flex"><p class="m-0">Sign in with Facebook</p></a>
+      </div>
+    </div>
+  </div>
+</div>

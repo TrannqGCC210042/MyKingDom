@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Cart
+   ========================================================================== */
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em; }
+
+.card-registration .select-arrow {
+  top: 13px; }
+
+.bg-grey {
+  background-color: #eae8e8; }
+
+section .form-control {
+  width: 100%; }
+
+.back:hover {
+  font-weight: 501; }
+
+.button-60 {
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 0.375em;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #363636;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(0.5em - 1px) 1em;
+  position: relative;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap; }
+
+.btnCheckout {
+  width: 100%;
+  color: white;
+  background-color: black;
+  border: 1px solid #dbdbdb; }
+  .btnCheckout:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    box-shadow: 0px 0px 5px 0px #cecece; }
+
+.product-count {
+  margin-top: 15px; }
+  .product-count .qtyminus {
+    width: 34px;
+    height: 34px;
+    background: #212529;
+    text-align: center;
+    font-size: 19px;
+    line-height: 36px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px 0 0 3px; }
+  .product-count .qtyplus {
+    width: 34px;
+    height: 34px;
+    background: #212529;
+    text-align: center;
+    font-size: 19px;
+    line-height: 36px;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0; }
+  .product-count .qty {
+    width: 60px;
+    text-align: center;
+    height: 34px; }
+
+.display-flex {
+  display: flex; }
+
+@media (min-width: 1025px) {
+  .h-custom {
+    height: 100vh !important; } }

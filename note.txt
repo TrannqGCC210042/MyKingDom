@@ -1,0 +1,5 @@
+https://www.npmjs.com/package/express   => npm install express
+https://www.npmjs.com/package/nodaemon  => npm i nodaemon --save-dev
+https://www.npmjs.com/package/morgan?activeTab=readme   => npm i morgan --save-dev
+https://www.npmjs.com/package/express-handlebars    => npm install express-handlebars
+https://www.npmjs.com/package/node-sass => npm install node-sass --save-dev

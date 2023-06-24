@@ -1,0 +1,169 @@
+ <!-- Shop Start -->
+<div class="container-fluid mt-2">
+    <div
+        class="row">
+        <!-- Shop Sidebar Start -->
+        <div class="col-lg-3 col-sm-3 shadow-sm p-3 mb-5 bg-body rounde ps-4">
+            {{!-- Range price --}}
+            <h5 class="font-weight-semi-bold">Selected a price:</h5>
+            <input type="range" id="rangeInput" name="rangeInput" min="0"
+                max="100" step="1" value="{{value}}">
+            <p id="selectedValue">Selected price: <span id="valueSpan">{{value}}</span></p>
+
+            <!-- Category Start -->
+            <div class="border-bottom mb-4 pb-4">
+                <div class="row">
+                    <h5 class="font-weight-semi-bold">Brand</h5>
+                    {{#each brands}}
+                    <div>
+                        <a href="?sort_by=brand&order={{this.id}}">{{this.name}}</a>
+                        <br>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <!-- Category End -->
+
+            <!-- Supplier Start -->
+            <div class="border-bottom mb-4 pb-4">
+                <div class="row">
+                    <h5 class="font-weight-semi-bold">Supplier</h5>
+                    {{#each suppliers}}
+                    <div>
+                        <a href="?sort_by=supplier&order={{this.id}}">{{this.name}}</a>
+                        <br>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <!-- Supplier End -->
+
+            <!-- For Gender Start -->
+            <div class="border-bottom mb-4 pb-4 filter">
+                <div class="row">
+                    <h5 class="font-weight-semi-bold">For Gender</h5>
+                    <a href="?sort_by=gender&order=male">Male</a>
+                    <a href="?sort_by=gender&order=female">Female</a>
+                    <a href="?sort_by=gender&order=unisex">Unisex</a>
+                </div>
+            </div>
+            <!-- For Gender End -->
+
+            <!-- Price End -->
+        </div>
+        <!-- Shop Sidebar End -->
+
+        <!-- Shop Product Start -->
+        <div class="col-lg-9 col-sm-9">
+            <div class="row">
+                <div class="col-md-10 title-shop">
+                    <h2>{{titleProduct}}</h2>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group my-2 d-flex">
+                        <div class="select">
+                            <select name="sort_by"
+                                onchange="location = this.value;"
+                                class="form-control border-white">
+                                <option class="sortby" disabled="disabled"
+                                    value="2" selected>SORT
+                                    BY</option>
+                                <option
+                                    value="?sort_by=name&order=ASC">A
+                                    -> Z</option>
+                                <option
+                                    value="?sort_by=name&order=DESC">Z
+                                    -> A</option>
+                                <option
+                                    value="?sort_by=price&order=ASC">Low
+                                    to
+                                    high</option>
+                                <option
+                                    value="?sort_by=price&order=DESC">High
+                                    to low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product -->
+            <div class="col-12 pb-1">
+                <nav aria-label="Page navigation">
+                    <div class="row text-center">
+                        {{#if products}}
+                        {{#each products}}
+                        <div class="product col-md-6 col-lg-4 col-6 col-xl-3">
+                            <div class="product-grid border"    
+                                style="width: 110%">
+                                <div class="product-image">
+                                    <a
+                                        href="/detail/{{this.id}}"
+                                        class="image ">
+                                        <img
+                                            src="/img/product/{{this.image}}"
+                                            class="card-img-top" alt>
+                                    </a>
+                                    <ul class="product-links">
+                                        <li>
+                                            <a href="/shop?search={{this.name}}">
+                                                <i
+                                                    class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i
+                                                    class="fa fa-heart"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a onclick="copyLink({{this.id}})">
+                                                <i class="fa-regular fa-share-from-square"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <input type="hidden" id="count"
+                                        value="1" />
+                                    <input type="hidden" name="size"
+                                        value
+                                        id="proSizeId">
+                                    <button
+                                        class="add-to-cart fw-bold"
+                                        onclick="addToCart({{this.id}})">Add
+                                        to
+                                        Cart</button>
+                                </div>
+
+                                <div class="product-content">
+                                    <h3 class="title">
+                                        <a
+                                            href="/detail/{{this.id}}">{{this.name}}</a>
+                                    </h3>
+                                    <div class="price">
+                                        <a
+                                            href="/detail/{{this.id}}">${{this.price}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        <div class="text-center">
+                            <img src="/img/product/empty.jpg" alt>
+                        </div>
+                        {{/if}}
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Shop Product End -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
