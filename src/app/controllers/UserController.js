@@ -84,6 +84,7 @@ class UserController {
 
       res.render("user/history", {
         title: "History",
+        style: "history.css",
         historyArray: historyArray,
       });
     } catch (error) {
@@ -116,6 +117,7 @@ class UserController {
       }
       res.render("user/purchase", {
         title: "Purchase",
+        style: "history.css",
         purchaseArray: purchaseArray,
       });
     } catch (error) {
